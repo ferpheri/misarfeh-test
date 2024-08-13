@@ -1,7 +1,7 @@
 {
     "theme_color": "#006000",
     "background_color": "#006000",
-    "display": "browser",
+    "display": "standalone",
     "scope": "/",
     "start_url": "/",
     "name": "Misarfeh-app",
