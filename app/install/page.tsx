@@ -5,8 +5,10 @@ import Image from "next/image";
 import IphoneShareIcon from "@/components/icons/IphoneShareIcon";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { HeroProps } from "@/components/Hero";
-const InstallPage = ({ isFadingOut }: HeroProps) => {
+interface InstallProps {
+  isFadingOut: boolean;
+}
+const InstallPage = ({ isFadingOut }: InstallProps) => {
   const [selectedDevice, setSelectedDevice] = useState<DeviceType>();
 
   useEffect(() => {
