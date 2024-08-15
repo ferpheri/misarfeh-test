@@ -8,7 +8,8 @@ import Link from "next/link";
 interface InstallProps {
   isFadingOut: boolean;
 }
-const InstallPage = ({ isFadingOut }: InstallProps) => {
+
+const InstallPage: React.FC<InstallProps> = ({ isFadingOut }) => {
   const [selectedDevice, setSelectedDevice] = useState<DeviceType>();
 
   useEffect(() => {
@@ -146,7 +147,8 @@ const InstallPage = ({ isFadingOut }: InstallProps) => {
                     صفحه منوی مرورگر رو باز کنید
                   </li>
                   <li>
-                    گزینه &quot;Install&quot; یا &quot;Add to Home Screen&quot; رو انتخاب کنید
+                    گزینه &quot;Install&quot; یا &quot;Add to Home Screen&quot;
+                    رو انتخاب کنید
                   </li>
                 </ol>
               </motion.div>
