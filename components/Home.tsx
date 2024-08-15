@@ -20,6 +20,9 @@ const HomePage = () => {
 
       switch (event.key) {
         case "ArrowUp":
+          selectedComponent === 1
+            ? setIsFadingOut(false)
+            : setIsFadingOut(true);
           setIsFadingOut(true);
           setScrollCoolDown();
           setTimeout(() => {
@@ -28,6 +31,9 @@ const HomePage = () => {
           }, 1000);
           break;
         case "ArrowDown":
+          selectedComponent === 4
+            ? setIsFadingOut(false)
+            : setIsFadingOut(true);
           setIsFadingOut(true);
           setScrollCoolDown();
           setTimeout(() => {
@@ -77,6 +83,7 @@ const HomePage = () => {
 
       if (touchStartY - touchEndY > 50 && touchStartY - touchEndY < 80) {
         // Swiping up
+        selectedComponent === 1 ? setIsFadingOut(false) : setIsFadingOut(true);
         setIsFadingOut(true);
         setScrollCoolDown();
         setTimeout(() => {
@@ -85,6 +92,7 @@ const HomePage = () => {
         }, 1000);
       } else if (touchEndY - touchStartY > 50 && touchEndY - touchStartY < 80) {
         // Swiping down
+        selectedComponent === 4 ? setIsFadingOut(false) : setIsFadingOut(true);
         setIsFadingOut(true);
         setScrollCoolDown();
         setTimeout(() => {
