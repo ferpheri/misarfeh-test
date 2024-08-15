@@ -2,10 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
-interface AboutUsProps {
-  isFadingOut: boolean;
-}
+import { HeroProps } from "@/components/Hero";
 
 const teamMembers = [
   {
@@ -41,7 +38,7 @@ const teamMembers = [
   },
 ];
 
-const AboutUs = ({ isFadingOut }: AboutUsProps) => {
+const AboutUs = ({ isFadingOut }: HeroProps) => {
   const [selectedMember, setSelectedMember] = useState<string | null>(null);
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
 

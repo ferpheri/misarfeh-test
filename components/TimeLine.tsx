@@ -2,12 +2,9 @@ import ClosedIcon from "@/components/icons/ClosedIcon";
 import GiftIcon from "@/components/icons/GiftIcon";
 import QuestionIcon from "@/components/icons/QuestionIcon";
 import Image from "next/image";
+import { HeroProps } from "@/components/Hero";
 import { motion } from "framer-motion";
-
-interface TimeLineProps {
-  isFadingOut: boolean;
-}
-const TimeLine = ({ isFadingOut }: TimeLineProps) => {
+const TimeLine = ({ isFadingOut }: HeroProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.7 }}

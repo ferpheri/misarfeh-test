@@ -5,11 +5,8 @@ import Image from "next/image";
 import IphoneShareIcon from "@/components/icons/IphoneShareIcon";
 import { motion } from "framer-motion";
 import Link from "next/link";
-interface InstallProps {
-  isFadingOut: boolean;
-}
-
-const InstallPage: React.FC<InstallProps> = ({ isFadingOut }) => {
+import { HeroProps } from "@/components/Hero";
+const InstallPage = ({ isFadingOut }: HeroProps) => {
   const [selectedDevice, setSelectedDevice] = useState<DeviceType>();
 
   useEffect(() => {
@@ -147,8 +144,7 @@ const InstallPage: React.FC<InstallProps> = ({ isFadingOut }) => {
                     صفحه منوی مرورگر رو باز کنید
                   </li>
                   <li>
-                    گزینه &quot;Install&quot; یا &quot;Add to Home Screen&quot;
-                    رو انتخاب کنید
+                    گزینه &quot;Install&quot; یا &quot;Add to Home Screen&quot; رو انتخاب کنید
                   </li>
                 </ol>
               </motion.div>

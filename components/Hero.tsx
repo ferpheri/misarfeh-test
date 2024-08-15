@@ -3,7 +3,7 @@ import Link from "next/link";
 import Typewriter from "./Typewriter";
 import { motion } from "framer-motion";
 
-interface HeroProps {
+export interface HeroProps {
   isFadingOut: boolean;
 }
 
