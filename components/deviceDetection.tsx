@@ -9,7 +9,10 @@ export function getDeviceType(): DeviceType {
     return "Android";
   }
 
-  if (/iPad|iPhone|iPod/.test(userAgent) && !/Windows Phone/.test(userAgent)) {
+  if (
+    /iPad|iPhone|iPod|Macintosh/.test(userAgent) &&
+    !/Windows Phone/.test(userAgent)
+  ) {
     return "iOS";
   }
 

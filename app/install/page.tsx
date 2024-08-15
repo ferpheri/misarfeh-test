@@ -5,8 +5,8 @@ import Image from "next/image";
 import IphoneShareIcon from "@/components/icons/IphoneShareIcon";
 import { motion } from "framer-motion";
 import Link from "next/link";
-
-const InstallPage = () => {
+import { HeroProps } from "@/components/Hero";
+const InstallPage = ({ isFadingOut }: HeroProps) => {
   const [selectedDevice, setSelectedDevice] = useState<DeviceType>();
 
   useEffect(() => {
@@ -18,8 +18,8 @@ const InstallPage = () => {
   };
 
   const containerVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { opacity: 1, scale: 1 },
+    hidden: { opacity: isFadingOut ? 1 : 0, scale: isFadingOut ? 1 : 0.7 },
+    visible: { opacity: isFadingOut ? 0 : 1, scale: isFadingOut ? 0.7 : 1 },
     float: {
       y: [0, -10, 0],
       transition: {
@@ -53,12 +53,12 @@ const InstallPage = () => {
       initial="hidden"
       animate={["visible", "float"]}
       variants={containerVariants}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 1, ease: "easeOut" }}
       className="flex flex-col items-center justify-center h-screen"
     >
-      <motion.div
+      <div
         className="bg-black bg-opacity-30 custom-backdrop-blur mt-10 mx-10 p-8 rounded-lg shadow-lg max-w-lg text-center"
-        variants={containerVariants}
+        // variants={containerVariants}
       >
         <motion.div
           className="flex justify-center items-center"
@@ -99,13 +99,22 @@ const InstallPage = () => {
                 />
                 <div className="w-32 h-10 flex items-center bg-dark-background rounded-full p-1 transition duration-300">
                   <div
-                    className={`w-16 h-8 bg-key-colors-primary text-white rounded-full shadow-md transform transition-transform duration-300 flex items-center justify-center ${
+                    className={`w-16 z-20 h-8 bg-key-colors-primary text-white rounded-full shadow-md transform transition-transform duration-300 flex items-center justify-center ${
                       selectedDevice === "iOS" ? "translate-x-14" : ""
                     }`}
                   >
                     <span className="text-xs font-medium text-white">
                       {selectedDevice}
                     </span>
+                  </div>
+                  <div
+                    className={`absolute w-16 h-8 text-xs font-medium flex items-center justify-center ${
+                      selectedDevice === "iOS"
+                        ? "-translate-x-1"
+                        : "translate-x-14"
+                    }`}
+                  >
+                    {selectedDevice === "iOS" ? "Android" : "iOS"}
                   </div>
                 </div>
               </label>
@@ -135,8 +144,7 @@ const InstallPage = () => {
                     صفحه منوی مرورگر رو باز کنید
                   </li>
                   <li>
-                    گزینه &quot;Install&quot; یا &quot;Add to Home Screen&quot;
-                    رو انتخاب کنید
+                    گزینه "Install" یا "Add to Home Screen" رو انتخاب کنید
                   </li>
                 </ol>
               </motion.div>
@@ -159,8 +167,8 @@ const InstallPage = () => {
                     </span>{" "}
                     رو انتخاب کنید
                   </li>
-                  <li>گزینه &quot;Add to Home Screen&quot; رو انتخاب کنید</li>
-                  <li>در بالای صفحه دکمه &quot;Add&quot; رو انتخاب کنید</li>
+                  <li>گزینه "Add to Home Screen" رو انتخاب کنید</li>
+                  <li>در بالای صفحه دکمه "Add" رو انتخاب کنید</li>
                 </ol>
               </motion.div>
             )}
@@ -174,7 +182,7 @@ const InstallPage = () => {
             لطفا می صرفه رو از طریق موبایل نصب کن
           </motion.h1>
         )}
-      </motion.div>
+      </div>
     </motion.div>
   );
 };

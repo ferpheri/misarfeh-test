@@ -1,11 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import Typewriter from "./Typewriter";
+import { motion } from "framer-motion";
 
+export interface HeroProps {
+  isFadingOut: boolean;
+}
 
-const Hero = () => {
+const Hero = ({ isFadingOut }: HeroProps) => {
   return (
-    <div className="justify-center items-center flex flex-col">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.7 }}
+      animate={{
+        opacity: isFadingOut ? 0 : 1,
+        scale: isFadingOut ? 0.7 : 1,
+      }}
+      transition={{ duration: 1, ease: "easeIn" }}
+      className="justify-center items-center flex flex-col"
+    >
       {" "}
       <h1 className="text-[3.5rem] sm:text-[3.75rem] xl:text-[4rem] xl:mb-6 mb-4">
         می صرفه
@@ -20,7 +32,12 @@ const Hero = () => {
         height={180}
         className="mt-6 sm:w-28 xl:w-30 w-24 h-auto"
       />
-      <div className="relative mt-9 xl:mt-12 flex justify-center items-center">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.75 }}
+        className="relative mt-9 xl:mt-12 flex justify-center items-center"
+      >
         <div className="absolute w-[70%] h-[75%] border-2 border-primary-primary98 rounded-rounded-6 animate-ping" />
         <div className="animate-ping absolute w-[80%] h-[95%] border-2 border-primary-primary98 rounded-rounded-6" />
         <div className="animate-ping absolute w-[90%] h-[115%] border-2 border-primary-primary98 rounded-rounded-6" />
@@ -30,8 +47,8 @@ const Hero = () => {
         >
           نصبش کن
         </Link>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 export default Hero;

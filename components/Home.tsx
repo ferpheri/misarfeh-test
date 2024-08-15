@@ -1,22 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import Typewriter from "./Typewriter";
 import InstallPage from "@/app/install/page";
 import TimeLine from "./TimeLine";
 import AboutUs from "./AboutUs";
 import Hero from "./Hero";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const HomePage = () => {
   const [selectedComponent, setSelectedComponent] = useState<number>(1);
   const [isScrollingAllowed, setIsScrollingAllowed] = useState<boolean>(true);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
+  const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
+  let scrollWithMouseTrigger = false;
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -24,12 +19,20 @@ const HomePage = () => {
 
       switch (event.key) {
         case "ArrowUp":
-          setSelectedComponent((prev) => Math.max(prev - 1, 1));
-          setScrollCooldown();
+          setIsFadingOut(true);
+          setScrollCoolDown();
+          setTimeout(() => {
+            setSelectedComponent((prev) => Math.max(prev - 1, 1));
+            setIsFadingOut(false);
+          }, 1000);
           break;
         case "ArrowDown":
-          setSelectedComponent((prev) => Math.min(prev + 1, 4));
-          setScrollCooldown();
+          setIsFadingOut(true);
+          setScrollCoolDown();
+          setTimeout(() => {
+            setSelectedComponent((prev) => Math.min(prev + 1, 4));
+            setIsFadingOut(false);
+          }, 1000);
           break;
         default:
           break;
@@ -37,16 +40,27 @@ const HomePage = () => {
     };
 
     const handleWheel = (event: WheelEvent) => {
-      if (!isScrollingAllowed) return;
-
-      if (event.deltaY < 0) {
+      if (!isScrollingAllowed || scrollWithMouseTrigger) return;
+      if ((event.deltaY < 0 && event.deltaY > -10) || event.deltaY === -100) {
+        selectedComponent === 1 ? setIsFadingOut(false) : setIsFadingOut(true);
         // Scrolling up
-        setSelectedComponent((prev) => Math.max(prev - 1, 1));
-      } else if (event.deltaY > 0) {
+        setScrollCoolDown();
+        setTimeout(() => {
+          setSelectedComponent((prev) => Math.max(prev - 1, 1));
+          setIsFadingOut(false);
+        }, 1000);
+      } else if (
+        (event.deltaY > 0 && event.deltaY < 10) ||
+        event.deltaY === 100
+      ) {
         // Scrolling down
-        setSelectedComponent((prev) => Math.min(prev + 1, 4));
+        selectedComponent === 4 ? setIsFadingOut(false) : setIsFadingOut(true);
+        setScrollCoolDown();
+        setTimeout(() => {
+          setSelectedComponent((prev) => Math.min(prev + 1, 4));
+          setIsFadingOut(false);
+        }, 1000);
       }
-      setScrollCooldown();
     };
 
     const handleTouchStart = (event: TouchEvent) => {
@@ -60,22 +74,32 @@ const HomePage = () => {
       const touch = event.touches[0];
       const touchEndY = touch.clientY;
 
-      if (touchStartY - touchEndY > 50) {
+      if (touchStartY - touchEndY > 50 && touchStartY - touchEndY < 80) {
         // Swiping up
-        setSelectedComponent((prev) => Math.min(prev + 1, 4));
-        setScrollCooldown();
-      } else if (touchEndY - touchStartY > 50) {
+        setIsFadingOut(true);
+        setScrollCoolDown();
+        setTimeout(() => {
+          setSelectedComponent((prev) => Math.min(prev + 1, 4));
+          setIsFadingOut(false);
+        }, 1000);
+      } else if (touchEndY - touchStartY > 50 && touchEndY - touchStartY < 80) {
         // Swiping down
-        setSelectedComponent((prev) => Math.max(prev - 1, 1));
-        setScrollCooldown();
+        setIsFadingOut(true);
+        setScrollCoolDown();
+        setTimeout(() => {
+          setSelectedComponent((prev) => Math.max(prev - 1, 1));
+          setIsFadingOut(false);
+        }, 1000);
       }
     };
 
-    const setScrollCooldown = () => {
+    const setScrollCoolDown = () => {
       setIsScrollingAllowed(false);
+      scrollWithMouseTrigger = true;
       setTimeout(() => {
         setIsScrollingAllowed(true);
-      }, 3000); // 3 seconds timeout
+        scrollWithMouseTrigger = false;
+      }, 2000); // 3 seconds timeout
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -95,21 +119,21 @@ const HomePage = () => {
   const renderComponent = () => {
     switch (selectedComponent) {
       case 1:
-        return <Hero />;
+        return <Hero isFadingOut={isFadingOut} />;
       case 2:
-        return <InstallPage />;
+        return <InstallPage isFadingOut={isFadingOut} />;
       case 3:
-        return <TimeLine />;
+        return <TimeLine isFadingOut={isFadingOut} />;
       case 4:
-        return <AboutUs />;
+        return <AboutUs isFadingOut={isFadingOut} />;
       default:
-        return <Hero />;
+        return <Hero isFadingOut={isFadingOut} />;
     }
   };
 
   return (
     <div className="content h-screen">
-      <div className="hero h-screen justify-center items-center flex flex-col">
+      <div className="hero h-screen justify-center items-center flex flex-col overflow-hidden">
         {renderComponent()}
       </div>
     </div>

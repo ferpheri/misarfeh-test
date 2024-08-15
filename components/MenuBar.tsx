@@ -33,13 +33,18 @@ const links = [
 const MenuBar = () => {
   const path = usePathname();
   useEffect(() => {
-    if (window.innerHeight < 675) {
-      document.body.classList.add("no-overflow");
-    } else {
-      document.body.classList.remove("no-overflow");
-    }
+    const handelResize = () => {
+      if (window.innerHeight < 660) {
+        document.body.classList.remove("overflow-hidden");
+      } else {
+        document.body.classList.add("overflow-hidden");
+      }
+    };
+    handelResize();
+    window.addEventListener("resize", handelResize);
     return () => {
-      document.body.classList.remove("no-overflow");
+      document.body.classList.remove("overflow-hidden");
+      window.removeEventListener("resize", handelResize);
     };
   }, []);
   return (

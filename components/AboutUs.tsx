@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { HeroProps } from "@/components/Hero";
 
 const teamMembers = [
   {
@@ -37,7 +38,7 @@ const teamMembers = [
   },
 ];
 
-const AboutUs = () => {
+const AboutUs = ({ isFadingOut }: HeroProps) => {
   const [selectedMember, setSelectedMember] = useState<string | null>(null);
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
 
@@ -69,8 +70,16 @@ const AboutUs = () => {
   );
 
   return (
-    <div className="flex flex-col justify-center items-center px-5 w-full ">
-      <div className="xl:mt-32 xl:mb-20 text-3xl md:text-5xl lg:mt-24 text-center ">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.7 }}
+      animate={{
+        opacity: isFadingOut ? 0 : 1,
+        scale: isFadingOut ? 0.7 : 1,
+      }}
+      transition={{ duration: 1, ease: "easeIn" }}
+      className="flex flex-col justify-center items-center px-5 w-full "
+    >
+      <div className="xl:mt-0 xl:mb-20 text-3xl md:text-5xl lg:mt-24 text-center ">
         <p className="mb-8">ساخته شده با اعتماد</p>
       </div>
       <div className="flex flex-row ">
@@ -167,7 +176,7 @@ const AboutUs = () => {
           ))
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
