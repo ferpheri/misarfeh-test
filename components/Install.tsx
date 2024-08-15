@@ -5,7 +5,8 @@ import Image from "next/image";
 import IphoneShareIcon from "@/components/icons/IphoneShareIcon";
 import { motion } from "framer-motion";
 import Link from "next/link";
-const InstallPage = () => {
+import { HeroProps } from "@/components/Hero";
+const Install = ({ isFadingOut }: HeroProps) => {
   const [selectedDevice, setSelectedDevice] = useState<DeviceType>();
 
   useEffect(() => {
@@ -17,8 +18,8 @@ const InstallPage = () => {
   };
 
   const containerVariants = {
-    hidden: { opacity: 0, scale: 0.7 },
-    visible: { opacity: 1, scale: 1 },
+    hidden: { opacity: isFadingOut ? 1 : 0, scale: isFadingOut ? 1 : 0.7 },
+    visible: { opacity: isFadingOut ? 0 : 1, scale: isFadingOut ? 0.7 : 1 },
     float: {
       y: [0, -10, 0],
       transition: {
@@ -187,4 +188,4 @@ const InstallPage = () => {
   );
 };
 
-export default InstallPage;
+export default Install;

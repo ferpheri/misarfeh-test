@@ -5,6 +5,7 @@ import InstallPage from "@/app/install/page";
 import TimeLine from "./TimeLine";
 import AboutUs from "./AboutUs";
 import Hero from "./Hero";
+import Install from "./Install";
 
 const HomePage = () => {
   const [selectedComponent, setSelectedComponent] = useState<number>(1);
@@ -121,7 +122,7 @@ const HomePage = () => {
       case 1:
         return <Hero isFadingOut={isFadingOut} />;
       case 2:
-        return <InstallPage isFadingOut={isFadingOut} />;
+        return <Install isFadingOut={isFadingOut} />;
       case 3:
         return <TimeLine isFadingOut={isFadingOut} />;
       case 4:
