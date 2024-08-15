@@ -144,7 +144,7 @@ const InstallPage = ({ isFadingOut }: HeroProps) => {
                     صفحه منوی مرورگر رو باز کنید
                   </li>
                   <li>
-                    گزینه "Install" یا "Add to Home Screen" رو انتخاب کنید
+                    گزینه &quot;Install&quot; یا &quot;Add to Home Screen&quot; رو انتخاب کنید
                   </li>
                 </ol>
               </motion.div>
@@ -167,8 +167,8 @@ const InstallPage = ({ isFadingOut }: HeroProps) => {
                     </span>{" "}
                     رو انتخاب کنید
                   </li>
-                  <li>گزینه "Add to Home Screen" رو انتخاب کنید</li>
-                  <li>در بالای صفحه دکمه "Add" رو انتخاب کنید</li>
+                  <li>گزینه &quot;Add to Home Screen&quot; رو انتخاب کنید</li>
+                  <li>در بالای صفحه دکمه &quot;Add&quot; رو انتخاب کنید</li>
                 </ol>
               </motion.div>
             )}
