@@ -35,7 +35,7 @@ const MenuBar = () => {
   useEffect(() => {
     const handelResize = () => {
       console.log(window.innerHeight);
-      if (window.innerHeight < 520) {
+      if (window.innerHeight < 520 && window.innerWidth < 479) {
         document.body.classList.remove("overflow-hidden");
       } else {
         document.body.classList.add("overflow-hidden");
