@@ -32,21 +32,21 @@ const links = [
 
 const MenuBar = () => {
   const path = usePathname();
-  useEffect(() => {
-    const handelResize = () => {
-      console.log(window.innerWidth);
-      if (window.innerWidth < 319) {
-        document.body.classList.remove("overflow-hidden");
-      } else {
-        document.body.classList.add("overflow-hidden");
-      }
-    };
-    window.addEventListener("resize", handelResize);
-    return () => {
-      document.body.classList.remove("overflow-hidden");
-      window.removeEventListener("resize", handelResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handelResize = () => {
+  //     console.log(window.innerWidth);
+  //     if (window.innerWidth < 319) {
+  //       document.body.classList.remove("overflow-hidden");
+  //     } else {
+  //       document.body.classList.add("overflow-hidden");
+  //     }
+  //   };
+  //   window.addEventListener("resize", handelResize);
+  //   return () => {
+  //     document.body.classList.remove("overflow-hidden");
+  //     window.removeEventListener("resize", handelResize);
+  //   };
+  // }, []);
   return (
     <nav className="bg-neutral-neutral20  bottom-3 sticky  mt-5 py-4 rounded-rounded-6 flex flex-row justify-around xl:mx-[29rem] 2xl:mx-[30rem] sm:mx-28 md:mx-64 lg:mx-72 mx-16 z-20">
       {links.map((link, index) => (
