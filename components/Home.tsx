@@ -138,7 +138,7 @@ const HomePage = () => {
 
   return (
     <div className="">
-      <div className="justify-center items-center flex flex-col mt-20">
+      <div className="justify-center items-center flex flex-col mt-28">
         {renderComponent()}
       </div>
     </div>
