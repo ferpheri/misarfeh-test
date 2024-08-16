@@ -21,7 +21,7 @@ const TimeLine = ({ isFadingOut }: HeroProps) => {
       >
         <div className="absolute z-0 w-1.5 md:w-2 h-full bg-black shadow-md inset-0 right-17 md:mx-auto md:right-0 md:left-0" />
 
-        {/* CARD 2 */}
+        {/* CARD 1 */}
         <div className="relative z-10">
           <div className="h-10 w-10 md:h-20 md:w-20 lg:h-28 lg:w-28 xl:h-20 xl:w-20 mr-7 rounded-full shadow-md bg-black xs:absolute md:mx-auto md:left-0 md:right-0 flex justify-center items-center">
             <ClosedIcon />
@@ -43,7 +43,7 @@ const TimeLine = ({ isFadingOut }: HeroProps) => {
             </div>
           </div>
         </div>
-        {/* CARD 3 */}
+        {/* CARD 2 */}
         <div className="relative z-10">
           <div className="h-10 w-10 md:h-20 md:w-20 lg:h-28 lg:w-28 mr-7 xl:h-20 xl:w-20 rounded-full shadow-md bg-black xs:absolute md:mx-auto md:left-0 md:right-0 flex justify-center items-center">
             <QuestionIcon />
@@ -65,7 +65,7 @@ const TimeLine = ({ isFadingOut }: HeroProps) => {
             </div>
           </div>
         </div>
-        {/* CARD 4 */}
+        {/* CARD 3 */}
         <div className="relative z-10">
           <div className="h-10 w-10 md:h-20 md:w-20 lg:h-28 lg:w-28 xl:h-20 xl:w-20 mr-7 rounded-full shadow-md bg-black xs:absolute md:mx-auto md:left-0 md:right-0 flex justify-center items-center">
             <GiftIcon />
@@ -87,7 +87,7 @@ const TimeLine = ({ isFadingOut }: HeroProps) => {
             </div>
           </div>
         </div>
-        {/* CARD 5 */}
+        {/* CARD 4 */}
         <div className="relative z-10">
           <div className="h-10 w-10 md:h-20 md:w-20 lg:h-28 lg:w-28 xl:h-20 xl:w-20 mr-7 rounded-full shadow-md bg-black xs:absolute md:mx-auto md:left-0 md:right-0 flex justify-center items-center">
             <Image
