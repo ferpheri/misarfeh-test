@@ -54,7 +54,7 @@ const Install = ({ isFadingOut }: HeroProps) => {
       animate={["visible", "float"]}
       variants={containerVariants}
       transition={{ duration: 1, ease: "easeOut" }}
-      className="flex flex-col items-center justify-center h-screen"
+      className="flex flex-col items-center justify-center"
     >
       <div
         className="bg-black bg-opacity-30 custom-backdrop-blur mt-0 mx-10 px-3 pt-3 xs:p-8 rounded-lg shadow-lg max-w-lg text-center"

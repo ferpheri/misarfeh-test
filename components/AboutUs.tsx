@@ -46,7 +46,6 @@ const AboutUs = ({ isFadingOut }: HeroProps) => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 1280);
     };
-
     handleResize();
     window.addEventListener("resize", handleResize);
 
@@ -77,7 +76,7 @@ const AboutUs = ({ isFadingOut }: HeroProps) => {
         scale: isFadingOut ? 0.7 : 1,
       }}
       transition={{ duration: 1, ease: "easeIn" }}
-      className="flex flex-col justify-center items-center px-5 w-full "
+      className="flex flex-col justify-center items-center px-5 w-full overflow-hidden"
     >
       <div className="xl:mt-0 xl:mb-20 text-3xl md:text-5xl lg:mt-24 text-center ">
         <p className="mb-8">ساخته شده با اعتماد</p>
