@@ -1,190 +1,148 @@
 "use client";
+
 import { useEffect, useState } from "react";
-import { getDeviceType, DeviceType } from "@/components/deviceDetection";
-import Image from "next/image";
-import IphoneShareIcon from "@/components/icons/IphoneShareIcon";
-import { motion } from "framer-motion";
-import Link from "next/link";
-const InstallPage = () => {
-  const [selectedDevice, setSelectedDevice] = useState<DeviceType>();
+import InstallPage from "@/app/install/page";
+import TimeLine from "./TimeLine";
+import AboutUs from "./AboutUs";
+import Hero from "./Hero";
+import Install from "./Install";
+
+const HomePage = () => {
+  const [selectedComponent, setSelectedComponent] = useState<number>(1);
+  const [isScrollingAllowed, setIsScrollingAllowed] = useState<boolean>(true);
+  const [touchStartY, setTouchStartY] = useState<number | null>(null);
+  const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
+  let scrollWithMouseTrigger = false;
 
   useEffect(() => {
-    setSelectedDevice(getDeviceType());
-  }, []);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!isScrollingAllowed) return;
 
-  const handleToggle = () => {
-    setSelectedDevice((prev) => (prev === "Android" ? "iOS" : "Android"));
-  };
+      switch (event.key) {
+        case "ArrowUp":
+          selectedComponent === 1
+            ? setIsFadingOut(false)
+            : setIsFadingOut(true);
+          setScrollCoolDown();
+          setTimeout(() => {
+            setSelectedComponent((prev) => Math.max(prev - 1, 1));
+            setIsFadingOut(false);
+          }, 1000);
+          break;
+        case "ArrowDown":
+          selectedComponent === 4
+            ? setIsFadingOut(false)
+            : setIsFadingOut(true);
+          setScrollCoolDown();
+          setTimeout(() => {
+            setSelectedComponent((prev) => Math.min(prev + 1, 4));
+            setIsFadingOut(false);
+          }, 1000);
+          break;
+        default:
+          break;
+      }
+    };
 
-  const containerVariants = {
-    hidden: { opacity: 0, scale: 0.7 },
-    visible: { opacity: 1, scale: 1 },
-    float: {
-      y: [0, -10, 0],
-      transition: {
-        y: {
-          duration: 2.5,
-          ease: "easeInOut",
-          repeat: Infinity,
-          repeatType: "loop",
-        },
-      },
-    },
-  };
+    const handleWheel = (event: WheelEvent) => {
+      if (!isScrollingAllowed || scrollWithMouseTrigger) return;
+      if ((event.deltaY < 0 && event.deltaY > -10) || event.deltaY === -100) {
+        selectedComponent === 1 ? setIsFadingOut(false) : setIsFadingOut(true);
+        // Scrolling up
+        setScrollCoolDown();
+        setTimeout(() => {
+          setSelectedComponent((prev) => Math.max(prev - 1, 1));
+          setIsFadingOut(false);
+        }, 1000);
+      } else if (
+        (event.deltaY > 0 && event.deltaY < 10) ||
+        event.deltaY === 100
+      ) {
+        // Scrolling down
+        selectedComponent === 4 ? setIsFadingOut(false) : setIsFadingOut(true);
+        setScrollCoolDown();
+        setTimeout(() => {
+          setSelectedComponent((prev) => Math.min(prev + 1, 4));
+          setIsFadingOut(false);
+        }, 1000);
+      }
+    };
 
-  const imageVariants = {
-    hidden: { opacity: 0, y: -50 },
-    visible: { opacity: 1, y: 0 },
-  };
+    const handleTouchStart = (event: TouchEvent) => {
+      const touch = event.touches[0];
+      setTouchStartY(touch.clientY);
+    };
 
-  const toggleVariants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: { opacity: 1, x: 0 },
-  };
+    const handleTouchMove = (event: TouchEvent) => {
+      if (!isScrollingAllowed || touchStartY === null) return;
 
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
+      const touch = event.touches[0];
+      const touchEndY = touch.clientY;
+
+      if (touchStartY - touchEndY > 50 && touchStartY - touchEndY < 80) {
+        // Swiping up
+        selectedComponent === 4 ? setIsFadingOut(false) : setIsFadingOut(true);
+        setScrollCoolDown();
+        setTimeout(() => {
+          setSelectedComponent((prev) => Math.min(prev + 1, 4));
+          setIsFadingOut(false);
+        }, 1000);
+      } else if (touchEndY - touchStartY > 50 && touchEndY - touchStartY < 80) {
+        // Swiping down
+        selectedComponent === 1 ? setIsFadingOut(false) : setIsFadingOut(true);
+        setScrollCoolDown();
+        setTimeout(() => {
+          setSelectedComponent((prev) => Math.max(prev - 1, 1));
+          setIsFadingOut(false);
+        }, 1000);
+      }
+    };
+
+    const setScrollCoolDown = () => {
+      setIsScrollingAllowed(false);
+      scrollWithMouseTrigger = true;
+      setTimeout(() => {
+        setIsScrollingAllowed(true);
+        scrollWithMouseTrigger = false;
+      }, 2000); // 3 seconds timeout
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("wheel", handleWheel);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove);
+
+    // Cleanup event listeners on component unmount
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [isScrollingAllowed, touchStartY]);
+
+  const renderComponent = () => {
+    switch (selectedComponent) {
+      case 1:
+        return <Hero isFadingOut={isFadingOut} />;
+      case 2:
+        return <Install isFadingOut={isFadingOut} />;
+      case 3:
+        return <TimeLine isFadingOut={isFadingOut} />;
+      case 4:
+        return <AboutUs isFadingOut={isFadingOut} />;
+      default:
+        return <Hero isFadingOut={isFadingOut} />;
+    }
   };
 
   return (
-    <motion.div
-      initial="hidden"
-      animate={["visible", "float"]}
-      variants={containerVariants}
-      transition={{ duration: 1, ease: "easeOut" }}
-      className="flex flex-col items-center justify-center h-screen"
-    >
-      <div
-        className="bg-black bg-opacity-30 custom-backdrop-blur mt-10 mx-10 p-8 rounded-lg shadow-lg max-w-lg text-center"
-        // variants={containerVariants}
-      >
-        <motion.div
-          className="flex justify-center items-center"
-          variants={imageVariants}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-        >
-          <Link href={"/"}>
-            <Image
-              alt="misarfehLogo"
-              src={"/misarfehLogo.png"}
-              width={56}
-              height={56}
-            />
-          </Link>
-        </motion.div>
-
-        {selectedDevice === "Android" || selectedDevice === "iOS" ? (
-          <>
-            <motion.h1
-              className="text-2xl font-bold mb-4"
-              variants={textVariants}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
-            >
-              می صرفه رو نصب کن
-            </motion.h1>
-
-            <motion.div
-              className="mb-6"
-              variants={toggleVariants}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
-            >
-              <label className="inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  className="hidden"
-                  checked={selectedDevice === "iOS"}
-                  onChange={handleToggle}
-                />
-                <div className="w-32 h-10 flex items-center bg-dark-background rounded-full p-1 transition duration-300">
-                  <div
-                    className={`w-16 z-20 h-8 bg-key-colors-primary text-white rounded-full shadow-md transform transition-transform duration-300 flex items-center justify-center ${
-                      selectedDevice === "iOS" ? "translate-x-14" : ""
-                    }`}
-                  >
-                    <span className="text-xs font-medium text-white">
-                      {selectedDevice}
-                    </span>
-                  </div>
-                  <div
-                    className={`absolute w-16 h-8 text-xs font-medium flex items-center justify-center ${
-                      selectedDevice === "iOS"
-                        ? "-translate-x-1"
-                        : "translate-x-14"
-                    }`}
-                  >
-                    {selectedDevice === "iOS" ? "Android" : "iOS"}
-                  </div>
-                </div>
-              </label>
-            </motion.div>
-
-            <motion.p
-              className="mb-4"
-              style={{ direction: "rtl" }}
-              variants={textVariants}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
-            >
-              مراحل زیر رو برای نصب می صرفه دنبال کن:
-            </motion.p>
-
-            {selectedDevice === "Android" && (
-              <motion.div
-                className="mb-6"
-                variants={textVariants}
-                transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
-              >
-                <ol
-                  className="list-decimal list-inside text-right"
-                  style={{ direction: "rtl" }}
-                >
-                  <li>
-                    با انتخاب گزینه <span className="text-2xl">⋮</span> در بالای
-                    صفحه منوی مرورگر رو باز کنید
-                  </li>
-                  <li>
-                    گزینه &quot;Install&quot; یا &quot;Add to Home Screen&quot;
-                    رو انتخاب کنید
-                  </li>
-                </ol>
-              </motion.div>
-            )}
-
-            {selectedDevice === "iOS" && (
-              <motion.div
-                className="mb-6"
-                variants={textVariants}
-                transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
-              >
-                <ol
-                  className="list-decimal list-inside text-right"
-                  style={{ direction: "rtl" }}
-                >
-                  <li>
-                    در نوار پایین گوشی دکمه{" "}
-                    <span className="inline-flex items-center justify-center">
-                      <IphoneShareIcon />
-                    </span>{" "}
-                    رو انتخاب کنید
-                  </li>
-                  <li>گزینه &quot;Add to Home Screen&quot; رو انتخاب کنید</li>
-                  <li>در بالای صفحه دکمه &quot;Add&quot; رو انتخاب کنید</li>
-                </ol>
-              </motion.div>
-            )}
-          </>
-        ) : (
-          <motion.h1
-            className="text-lg mt-3"
-            variants={textVariants}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
-          >
-            لطفا می صرفه رو از طریق موبایل نصب کن
-          </motion.h1>
-        )}
+    <div className="content h-screen">
+      <div className="hero h-screen justify-center items-center flex flex-col overflow-hidden">
+        {renderComponent()}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
-export default InstallPage;
+export default HomePage;
