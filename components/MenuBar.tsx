@@ -34,13 +34,13 @@ const MenuBar = () => {
   const path = usePathname();
   useEffect(() => {
     const handelResize = () => {
-      if (window.innerHeight < 520) {
+      console.log(window.innerHeight );
+      if (window.innerWidth < 320) {
         document.body.classList.remove("overflow-hidden");
       } else {
         document.body.classList.add("overflow-hidden");
       }
     };
-    handelResize();
     window.addEventListener("resize", handelResize);
     return () => {
       document.body.classList.remove("overflow-hidden");
