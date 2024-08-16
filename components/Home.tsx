@@ -27,7 +27,7 @@ const HomePage = () => {
           setTimeout(() => {
             setSelectedComponent((prev) => Math.max(prev - 1, 1));
             setIsFadingOut(false);
-          }, 1000);
+          }, 750);
           break;
         case "ArrowDown":
           selectedComponent === 4
@@ -37,7 +37,7 @@ const HomePage = () => {
           setTimeout(() => {
             setSelectedComponent((prev) => Math.min(prev + 1, 4));
             setIsFadingOut(false);
-          }, 1000);
+          }, 750);
           break;
         default:
           break;
@@ -53,7 +53,7 @@ const HomePage = () => {
         setTimeout(() => {
           setSelectedComponent((prev) => Math.max(prev - 1, 1));
           setIsFadingOut(false);
-        }, 1000);
+        }, 750);
       } else if (
         (event.deltaY > 0 && event.deltaY < 10) ||
         event.deltaY === 100
@@ -64,7 +64,7 @@ const HomePage = () => {
         setTimeout(() => {
           setSelectedComponent((prev) => Math.min(prev + 1, 4));
           setIsFadingOut(false);
-        }, 1000);
+        }, 750);
       }
     };
 
@@ -86,7 +86,7 @@ const HomePage = () => {
         setTimeout(() => {
           setSelectedComponent((prev) => Math.min(prev + 1, 4));
           setIsFadingOut(false);
-        }, 1000);
+        }, 750);
       } else if (touchEndY - touchStartY > 50 && touchEndY - touchStartY < 80) {
         // Swiping down
         selectedComponent === 1 ? setIsFadingOut(false) : setIsFadingOut(true);
@@ -94,7 +94,7 @@ const HomePage = () => {
         setTimeout(() => {
           setSelectedComponent((prev) => Math.max(prev - 1, 1));
           setIsFadingOut(false);
-        }, 1000);
+        }, 750);
       }
     };
 
@@ -104,7 +104,7 @@ const HomePage = () => {
       setTimeout(() => {
         setIsScrollingAllowed(true);
         scrollWithMouseTrigger = false;
-      }, 3000); // 3 seconds timeout
+      }, 1500); // 1.5 seconds timeout
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -137,8 +137,8 @@ const HomePage = () => {
   };
 
   return (
-    <div className="">
-      <div className="justify-center items-center flex flex-col mt-28">
+    <div className="flex flex-col justify-center items-center">
+      <div className="justify-center items-center flex flex-col mt-32 xs:mt-52 xl:mt-28 lg:mt-96">
         {renderComponent()}
       </div>
     </div>

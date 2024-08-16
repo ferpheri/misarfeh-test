@@ -15,7 +15,7 @@ const Hero = ({ isFadingOut }: HeroProps) => {
         opacity: isFadingOut ? 0 : 1,
         scale: isFadingOut ? 0.7 : 1,
       }}
-      transition={{ duration: 1, ease: "easeIn" }}
+      transition={{ duration: 0.75, ease: "easeIn" }}
       className="justify-center items-center flex flex-col"
     >
       {" "}
@@ -35,7 +35,7 @@ const Hero = ({ isFadingOut }: HeroProps) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.75 }}
+        transition={{ delay: 0.25, duration: 0.5 }}
         className="relative mt-9 xl:mt-12 flex justify-center items-center"
       >
         <div className="absolute w-[70%] h-[75%] border-2 border-primary-primary98 rounded-rounded-6 animate-ping" />

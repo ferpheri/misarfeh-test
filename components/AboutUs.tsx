@@ -75,20 +75,20 @@ const AboutUs = ({ isFadingOut }: HeroProps) => {
         opacity: isFadingOut ? 0 : 1,
         scale: isFadingOut ? 0.7 : 1,
       }}
-      transition={{ duration: 1, ease: "easeIn" }}
-      className="flex flex-col justify-center items-center px-5 w-full overflow-hidden"
+      transition={{ duration: 0.75, ease: "easeIn" }}
+      className="flex flex-col justify-center items-center xs:px-5 w-full overflow-hidden"
     >
-      <div className="xl:mt-0 xl:mb-20 text-3xl md:text-5xl lg:mt-24 text-center ">
+      <div className="xl:mt-0 xl:mb-20 text-3xl md:text-5xl lg:mt-0 md:-mt-16 text-center ">
         <p className="mb-8">ساخته شده با اعتماد</p>
       </div>
-      <div className="flex flex-row ">
+      <div className="flex flex-row">
         {isSmallScreen ? (
           <div className="mt-10">
             <div id="top3Cards" className="flex flex-row">
               {" "}
               {teamMembers.slice(0, 3).map((member) => (
                 <div key={member.name}>
-                  <div className="card xl:x-4 mx-2 relative group xl:w-56 xl:h-56 h-24 w-24 md:h-36 md:w-36 lg:h-44 lg:w-44 bg-white xl:p-6 p-3 rounded-full hover:rounded-xl hover:h-52 md:hover:h-60 lg:hover:h-72 transition-all duration-150">
+                  <div className="card xl:mx-4 mx-1 relative group xl:w-56 xl:h-56 h-24 w-24 md:h-36 md:w-36 lg:h-44 lg:w-44 bg-white xl:p-6 p-3 rounded-full hover:rounded-xl hover:h-52 md:hover:h-60 lg:hover:h-72 transition-all duration-150">
                     <div className="relative w-full h-full">
                       <Image
                         src={member.imageSrc}

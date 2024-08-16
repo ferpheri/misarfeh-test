@@ -12,8 +12,8 @@ const TimeLine = ({ isFadingOut }: HeroProps) => {
         opacity: isFadingOut ? 0 : 1,
         scale: isFadingOut ? 0.7 : 1,
       }}
-      transition={{ duration: 1, ease: "easeIn" }}
-      className="antialiased text-gray-300 md:mb-20 xs:mt-16 -mt-10 overflow-hidden"
+      transition={{ duration: 0.75, ease: "easeIn" }}
+      className="antialiased text-gray-300 md:mb-20 xs:mt-16 md:-mt-20 lg:-mt-28 xl:mt-0 -mt-16 overflow-hidden"
     >
       <div
         className="container relative mx-auto px-6 flex flex-col space-y-2 md:space-y-8 lg:space-y-12 xl:space-y-2"
