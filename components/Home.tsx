@@ -104,7 +104,7 @@ const HomePage = () => {
       setTimeout(() => {
         setIsScrollingAllowed(true);
         scrollWithMouseTrigger = false;
-      }, 2000); // 3 seconds timeout
+      }, 3000); // 3 seconds timeout
     };
 
     window.addEventListener("keydown", handleKeyDown);
