@@ -34,9 +34,7 @@ const MenuBar = () => {
   const path = usePathname();
   useEffect(() => {
     const handelResize = () => {
-      console.log(window.innerHeight);
-      console.log(window.innerWidth);
-      if ( window.innerHeight < 520) {
+      if (window.innerHeight < 520 || path === "/services") {
         document.body.classList.remove("overflow-hidden");
       } else {
         document.body.classList.add("overflow-hidden");
@@ -48,7 +46,7 @@ const MenuBar = () => {
       document.body.classList.remove("overflow-hidden");
       window.removeEventListener("resize", handelResize);
     };
-  }, []);
+  }, [path]);
   return (
     <nav className="bg-neutral-neutral20  bottom-3 sticky  mt-5 py-4 rounded-rounded-6 flex flex-row justify-around xl:mx-[29rem] 2xl:mx-[30rem] sm:mx-28 md:mx-64 lg:mx-72 mx-16 z-20">
       {links.map((link, index) => (
