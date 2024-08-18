@@ -87,7 +87,11 @@ const ServicesPage = () => {
                   ease: "easeInOut",
                 }}
               >
-                <ServiceCard title={card.title} caption={card.caption} />
+                <ServiceCard
+                  key={index}
+                  title={card.title}
+                  caption={card.caption}
+                />
               </motion.div>
             ) : (
               <motion.div
@@ -102,7 +106,11 @@ const ServicesPage = () => {
                   ease: "easeInOut",
                 }}
               >
-                <ServiceCard title={card.title} caption={card.caption} />
+                <ServiceCard
+                  key={index}
+                  title={card.title}
+                  caption={card.caption}
+                />
               </motion.div>
             )}
           </>
@@ -112,6 +120,7 @@ const ServicesPage = () => {
         {vectorsValue.map((vector, index) => (
           <div>
             <ServiceVector
+              key={index}
               title={vector.title}
               description={vector.description}
               image={vector.image}
