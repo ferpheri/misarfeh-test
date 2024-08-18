@@ -73,7 +73,7 @@ const ServicesPage = () => {
       </div>
       <div className="flex sm:flex-row flex-col justify-center my-16 items-center sm:space-x-4 sm:space-y-0 md:space-x-6 lg:space-x-8 xl:space-x-10 2xl:space-x-12 space-y-4 space-x-0">
         {cardsValue.map((card, index) => (
-          <>
+          <div key={index}>
             {isSmallScreen ? (
               <motion.div
                 className="flex flex-col justify-center items-center"
@@ -87,11 +87,7 @@ const ServicesPage = () => {
                   ease: "easeInOut",
                 }}
               >
-                <ServiceCard
-                  key={index}
-                  title={card.title}
-                  caption={card.caption}
-                />
+                <ServiceCard title={card.title} caption={card.caption} />
               </motion.div>
             ) : (
               <motion.div
@@ -113,14 +109,13 @@ const ServicesPage = () => {
                 />
               </motion.div>
             )}
-          </>
+          </div>
         ))}
       </div>
       <div>
         {vectorsValue.map((vector, index) => (
-          <div>
+          <div key={index}>
             <ServiceVector
-              key={index}
               title={vector.title}
               description={vector.description}
               image={vector.image}
