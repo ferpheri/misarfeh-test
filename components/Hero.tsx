@@ -43,7 +43,7 @@ const Hero = ({ isFadingOut }: HeroProps) => {
         <div className="animate-ping absolute w-[90%] h-[115%] border-2 rounded-rounded-6" />
         <Link
           href="/install"
-          className="relative border-2 sm:text-xl xl:text-xl xl:py-2 xl:px-4 sm:py-2 sm:px-4 text-lg py-1 px-2 bg-primary-primary98 hover:bg-neutral-neutral90 text-key-colors-primary rounded-rounded-6"
+          className="relative sm:text-xl xl:text-xl xl:py-2 xl:px-4 sm:py-2 sm:px-4 text-lg py-1 px-2 bg-primary-primary98 hover:bg-neutral-neutral90 text-key-colors-primary rounded-rounded-6"
         >
           نصبش کن
         </Link>
