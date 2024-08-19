@@ -34,7 +34,11 @@ const MenuBar = () => {
   const path = usePathname();
   useEffect(() => {
     const handelResize = () => {
-      if (window.innerHeight < 520 || path === "/services") {
+      if (
+        window.innerHeight < 520 ||
+        path === "/services" ||
+        path === "/about"
+      ) {
         document.body.classList.remove("overflow-hidden");
       } else {
         document.body.classList.add("overflow-hidden");
