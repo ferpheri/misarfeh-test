@@ -137,8 +137,8 @@ const HomePage = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="justify-center items-center flex flex-col mt-32 xs:mt-32 xl:mt-28 lg:mt-96">
+    <div className="flex flex-col justify-center items-center h-screen">
+      <div className="justify-center items-center flex flex-col">
         {renderComponent()}
       </div>
     </div>

@@ -13,10 +13,10 @@ const TimeLine = ({ isFadingOut }: HeroProps) => {
         scale: isFadingOut ? 0.7 : 1,
       }}
       transition={{ duration: 0.75, ease: "easeIn" }}
-      className="antialiased text-gray-300 md:mb-20 xs:mt-16 md:-mt-20 lg:-mt-28 xl:mt-0 -mt-16 overflow-hidden"
+      className="antialiased text-gray-300 overflow-hidden "
     >
       <div
-        className="container relative mx-auto px-6 flex flex-col space-y-2 md:space-y-8 lg:space-y-12 xl:space-y-2"
+        className=" relative mx-auto px-6 flex flex-col space-y-2 md:space-y-8 lg:space-y-12 xl:space-y-2"
         style={{ direction: "rtl" }}
       >
         <div className="absolute z-0 w-1.5 md:w-2 h-full bg-black shadow-md inset-0 right-17 md:mx-auto md:right-0 md:left-0" />
@@ -93,9 +93,9 @@ const TimeLine = ({ isFadingOut }: HeroProps) => {
             <Image
               src="/misarfehLogo.png"
               alt="logo"
-              height={50}
-              width={50}
-              className="size-6 md:size-12 lg:size-16 xl:size-11"
+              height={70}
+              width={70}
+              className="p-2 xs:p-2 md:p-3 lg:p-1 xl:p-3"
             />
           </div>
           <div className="relative pt-2 xs:pr-20 xs:pt-0 md:w-1/2 md:mr-auto md:pr-16 md:ml-0 lg:-ml-2">
