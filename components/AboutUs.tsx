@@ -78,7 +78,7 @@ const AboutUs = ({ isFadingOut }: HeroProps) => {
       transition={{ duration: 0.75, ease: "easeIn" }}
       className="flex flex-col justify-center items-center xs:px-5 w-full overflow-hidden"
     >
-      <div className="xl:mt-0 xl:mb-20 text-3xl md:text-5xl lg:mt-0 md:-mt-16 text-center ">
+      <div className="xl:mb-20 text-3xl md:text-5xl text-center ">
         <p className="mb-8">ساخته شده با اعتماد</p>
       </div>
       <div className="flex flex-row">
