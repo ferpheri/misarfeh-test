@@ -30,12 +30,12 @@ const HomePage = () => {
           }, 750);
           break;
         case "ArrowDown":
-          selectedComponent === 4
+          selectedComponent === 3
             ? setIsFadingOut(false)
             : setIsFadingOut(true);
           setScrollCoolDown();
           setTimeout(() => {
-            setSelectedComponent((prev) => Math.min(prev + 1, 4));
+            setSelectedComponent((prev) => Math.min(prev + 1, 3));
             setIsFadingOut(false);
           }, 750);
           break;
@@ -59,10 +59,10 @@ const HomePage = () => {
         event.deltaY === 100
       ) {
         // Scrolling down
-        selectedComponent === 4 ? setIsFadingOut(false) : setIsFadingOut(true);
+        selectedComponent === 3 ? setIsFadingOut(false) : setIsFadingOut(true);
         setScrollCoolDown();
         setTimeout(() => {
-          setSelectedComponent((prev) => Math.min(prev + 1, 4));
+          setSelectedComponent((prev) => Math.min(prev + 1, 3));
           setIsFadingOut(false);
         }, 750);
       }
@@ -81,10 +81,10 @@ const HomePage = () => {
 
       if (touchStartY - touchEndY > 50 && touchStartY - touchEndY < 80) {
         // Swiping up
-        selectedComponent === 4 ? setIsFadingOut(false) : setIsFadingOut(true);
+        selectedComponent === 3 ? setIsFadingOut(false) : setIsFadingOut(true);
         setScrollCoolDown();
         setTimeout(() => {
-          setSelectedComponent((prev) => Math.min(prev + 1, 4));
+          setSelectedComponent((prev) => Math.min(prev + 1, 3));
           setIsFadingOut(false);
         }, 750);
       } else if (touchEndY - touchStartY > 50 && touchEndY - touchStartY < 80) {
@@ -126,10 +126,8 @@ const HomePage = () => {
       case 1:
         return <Hero isFadingOut={isFadingOut} />;
       case 2:
-        return <Install isFadingOut={isFadingOut} />;
-      case 3:
         return <TimeLine isFadingOut={isFadingOut} />;
-      case 4:
+      case 3:
         return <AboutUs isFadingOut={isFadingOut} />;
       default:
         return <Hero isFadingOut={isFadingOut} />;

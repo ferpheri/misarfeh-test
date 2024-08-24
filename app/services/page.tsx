@@ -1,4 +1,7 @@
 "use client";
+import ClosedSign from "@/components/icons/ClosedSign";
+import FastfoodBurger from "@/components/icons/FastfoodBurger";
+import GameGift from "@/components/icons/GameGift";
 import ServiceCard from "@/components/ServiceCard";
 import ServiceVector from "@/components/ServiceVector";
 import { motion } from "framer-motion";
@@ -29,27 +32,23 @@ const cardsValue = [
 const vectorsValue = [
   {
     title: "همه جا بسته",
-    description:
-      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
-    image: "/vector.jpg",
+    description: "ممکنه سفارش تو پشت در های نیمه بسته منتظرت باشه.",
+    image: <ClosedSign />,
   },
   {
     title: "سورپرایز بگ",
-    description:
-      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
-    image: "/vector.jpg",
+    description: "با کمبو های مخصوص می صرفه، سورپرایز میشی.",
+    image: <GameGift />,
   },
   {
     title: "غذا چی کار کنم",
-    description:
-      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
-    image: "/vector.jpg",
+    description: "اشکال نداره آخرین پخت های رستوران، داخل می صرفه هستن",
+    image: <FastfoodBurger />,
   },
   {
     title: "می صرفه",
-    description:
-      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
-    image: "/vector.jpg",
+    description: "داخل دنیای ما، همه چیز می صرفه.",
+    image: "/misarfehLogo.png",
   },
 ];
 const ServicesPage = () => {

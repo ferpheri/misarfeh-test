@@ -7,7 +7,8 @@ interface AboutUsCardProps {
 }
 const AboutUsCard = ({ name, image, position, caption }: AboutUsCardProps) => {
   return (
-    <div className="bg-[rgb(0,2,22)] rounded-lg shadow-lg p-5 mx-4 mb-4 ">
+    // later should remove the width length for the first div
+    <div className="bg-[rgb(0,2,22)] rounded-lg shadow-lg p-5 mx-4 mb-4 lg:w-96 md:w-80 sm:w-72">
       <div className="flex justify-between items-center mb-4">
         {/* position tag */}
         <div className="bg-[#006000] rounded-xl flex justify-center items-center text-center uppercase">

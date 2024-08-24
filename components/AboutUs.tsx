@@ -6,36 +6,31 @@ import { HeroProps } from "@/components/Hero";
 
 const teamMembers = [
   {
-    name: "Mohamad",
-    position: "CEO",
+    name: "نیما کارگر",
+    position: "مدیر اجرایی",
     imageSrc: "/mohamad.jpg",
-    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et.",
+    brief: "فعال در حوزه سلامت",
   },
   {
-    name: "Mahan",
-    position: "CTO",
+    name: "علی رضا خدری",
+    position: "مدیر مارکتینگ",
     imageSrc: "/mohamad.jpg",
     brief:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus.",
+      "فعال در حوزه تبلیغات",
   },
   {
-    name: "Alireza",
-    position: "CFO",
+    name: "ماهان امیریان",
+    position: "مدیر تکنولوژی",
     imageSrc: "/mohamad.jpg",
-    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam.",
+    brief: "فعال حوزه استارت آپ ها",
   },
   {
-    name: "Nima",
-    position: "Developer",
+    name: "محمد دهقانیان",
+    position: "برنامه نویس",
     imageSrc: "/mohamad.jpg",
-    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce.",
+    brief: "فعال حوزه تکنولوژی",
   },
-  {
-    name: "Saiid",
-    position: "Designer",
-    imageSrc: "/mohamad.jpg",
-    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam.",
-  },
+ 
 ];
 
 const AboutUs = ({ isFadingOut }: HeroProps) => {
@@ -86,9 +81,9 @@ const AboutUs = ({ isFadingOut }: HeroProps) => {
           <div className="mt-10">
             <div id="top3Cards" className="flex flex-row">
               {" "}
-              {teamMembers.slice(0, 3).map((member) => (
+              {teamMembers.slice(0, 2).map((member) => (
                 <div key={member.name}>
-                  <div className="card xl:mx-4 mx-1 relative group xl:w-56 xl:h-56 h-24 w-24 md:h-36 md:w-36 lg:h-44 lg:w-44 bg-white xl:p-6 p-3 rounded-full hover:rounded-xl hover:h-52 md:hover:h-60 lg:hover:h-72 transition-all duration-150">
+                  <div className="card xl:mx-4 mx-2 relative group xl:w-56 xl:h-56 h-24 w-24 md:h-36 md:w-36 lg:h-44 lg:w-44 bg-white xl:p-6 p-3 rounded-full hover:rounded-xl hover:h-36 md:hover:h-52 lg:hover:h-72 transition-all duration-150">
                     <div className="relative w-full h-full">
                       <Image
                         src={member.imageSrc}
@@ -99,7 +94,7 @@ const AboutUs = ({ isFadingOut }: HeroProps) => {
                         onClick={() => showInformationHandler(member.name)}
                       />
                     </div>
-                    <div className="text-center -translate-y-40 md:-translate-y-[9rem] opacity-0 group-hover:opacity-100">
+                    <div className="text-center -translate-y-[5.5rem] md:-translate-y-[6rem] lg:-translate-y-[8rem] opacity-0 group-hover:opacity-100">
                       <h3 className="text-sm text-gray-600 md:text-base lg:text-xl">
                         {member.name}
                       </h3>
@@ -116,9 +111,9 @@ const AboutUs = ({ isFadingOut }: HeroProps) => {
             </div>
             <div className="flex flex-row justify-center mt-16" id="down2Cards">
               {" "}
-              {teamMembers.slice(3).map((member) => (
+              {teamMembers.slice(2).map((member) => (
                 <div key={member.name}>
-                  <div className="card xl:mx-4 mx-2 relative group xl:w-56 xl:h-56 h-24 w-24 md:h-36 md:w-36  lg:h-44 lg:w-44 bg-white xl:p-6 p-3 rounded-full hover:rounded-xl hover:h-52 md:hover:h-60 lg:hover:h-72  transition-all duration-150">
+                  <div className="card xl:mx-4 mx-2 relative group xl:w-56 xl:h-56 h-24 w-24 md:h-36 md:w-36  lg:h-44 lg:w-44 bg-white xl:p-6 p-3 rounded-full hover:rounded-xl hover:h-36 md:hover:h-52 lg:hover:h-72  transition-all duration-150">
                     <div className="relative w-full h-full ">
                       <Image
                         src={member.imageSrc}
@@ -129,7 +124,7 @@ const AboutUs = ({ isFadingOut }: HeroProps) => {
                         onClick={() => showInformationHandler(member.name)}
                       />
                     </div>
-                    <div className="text-center -translate-y-40 md:-translate-y-[9rem] opacity-0 group-hover:opacity-100">
+                    <div className="text-center -translate-y-[5.5rem] md:-translate-y-[6rem] lg:-translate-y-[8rem] opacity-0 group-hover:opacity-100">
                       <h3 className="text-sm text-gray-600 md:text-base lg:text-xl">
                         {member.name}
                       </h3>
@@ -148,7 +143,7 @@ const AboutUs = ({ isFadingOut }: HeroProps) => {
         ) : (
           teamMembers.map((member) => (
             <div key={member.name}>
-              <div className="card mx-4 relative group w-56 h-56 bg-white p-6 rounded-full hover:rounded-xl hover:h-80 transition-all duration-150">
+              <div className="card mx-4 relative group w-56 h-56 bg-white p-6 rounded-full hover:rounded-xl hover:h-64 transition-all duration-150">
                 <div className="relative w-full h-full ">
                   <Image
                     src={member.imageSrc}
@@ -159,7 +154,7 @@ const AboutUs = ({ isFadingOut }: HeroProps) => {
                     onClick={() => showInformationHandler(member.name)}
                   />
                 </div>
-                <div className="text-center -translate-y-36 opacity-0 group-hover:opacity-100">
+                <div className="text-center -translate-y-20 opacity-0 group-hover:opacity-100">
                   <h3 className="text-base text-gray-600 md:text-xl">
                     {member.name}
                   </h3>

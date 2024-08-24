@@ -27,6 +27,6 @@
     "**/*.tsx",
     "types/globals.d.ts",
     ".next/types/**/*.ts"
-  ],
+, "app/contact/page.tsx"  ],
   "exclude": ["node_modules"]
 }

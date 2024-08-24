@@ -37,7 +37,8 @@ const MenuBar = () => {
       if (
         window.innerHeight < 520 ||
         path === "/services" ||
-        path === "/about"
+        path === "/about" ||
+        path === "/contact"
       ) {
         document.body.classList.remove("overflow-hidden");
       } else {

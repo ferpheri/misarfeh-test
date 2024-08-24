@@ -8,8 +8,11 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+     container: {
+      center: true,
+    },
     screens: {
-      xs: "390px",
+      xs: "480px",
       ...defaultTheme.screens,
     },
     extend: {

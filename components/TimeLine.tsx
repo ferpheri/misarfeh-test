@@ -13,7 +13,7 @@ const TimeLine = ({ isFadingOut }: HeroProps) => {
         scale: isFadingOut ? 0.7 : 1,
       }}
       transition={{ duration: 0.75, ease: "easeIn" }}
-      className="antialiased text-gray-300 overflow-hidden "
+      className="antialiased text-gray-300"
     >
       <div
         className=" relative mx-auto px-6 flex flex-col space-y-2 md:space-y-8 lg:space-y-12 xl:space-y-2"
@@ -33,12 +33,10 @@ const TimeLine = ({ isFadingOut }: HeroProps) => {
             />
             <div className="bg-black py-2 px-3 rounded-md shadow-md ">
               <h1 className="text-xs md:text-sm lg:text-lg xl:text-sm">
-                Title
+                همه جا تعطیله
               </h1>
               <p className="text-2xs md:text-xs lg:text-base xl:text-xs">
-                {" "}
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                استفاده از طراحان
+               ممکنه سفارش تو پشت درهای نیمه بسته منتظرت باشه.
               </p>
             </div>
           </div>
@@ -55,12 +53,10 @@ const TimeLine = ({ isFadingOut }: HeroProps) => {
             />
             <div className="bg-black py-2 px-3 rounded-md shadow-md ">
               <h1 className="text-xs md:text-sm lg:text-lg xl:text-sm">
-                Title
+                دیگه سفارش نمی گیرن
               </h1>
               <p className="text-2xs md:text-xs lg:text-base xl:text-xs">
-                {" "}
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                استفاده از طراحان
+               اشکال نداره:) آخرین پخت های رستوران، داخل میصرفه هستن.
               </p>
             </div>
           </div>
@@ -77,12 +73,10 @@ const TimeLine = ({ isFadingOut }: HeroProps) => {
             />
             <div className="bg-black py-2 px-3 rounded-md shadow-md ">
               <h1 className="text-xs md:text-sm lg:text-lg xl:text-sm">
-                Title
+                سورپرایزت می کنه
               </h1>
               <p className="text-2xs md:text-xs lg:text-base xl:text-xs">
-                {" "}
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                استفاده از طراحان
+              با کمبو های مخصوص می صرفه، سورپرایز میشی.
               </p>
             </div>
           </div>
@@ -105,12 +99,10 @@ const TimeLine = ({ isFadingOut }: HeroProps) => {
             />
             <div className="bg-black py-2 px-3 rounded-md shadow-md ">
               <h1 className="text-xs md:text-sm lg:text-lg xl:text-sm">
-                Title
+                همش می صرفه
               </h1>
               <p className="text-2xs md:text-xs lg:text-base xl:text-xs">
-                {" "}
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                استفاده از طراحان
+                داخل دنیای ما، همه چیز می صرفه:)
               </p>
             </div>
           </div>
